@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
+import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity() {
@@ -19,7 +21,9 @@ class MainActivity : AppCompatActivity() {
 
         list.layoutManager = LinearLayoutManager(this)
         list.adapter = RecyclerViewAdapter(this, items){
-            toast("${it.name}")
+            //toast("${it.name}")
+            startActivity(intentFor<DetailActivity>("name" to "${it.name}"))
+            Log.e("MainActivity", "${it.name}")
         }
     }
 
